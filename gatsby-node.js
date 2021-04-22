@@ -84,5 +84,10 @@ exports.createSchemaCustomization = ({ actions }) => {
       type: String
     }
 
+    type abuCmsHomePage implements Node {
+      intro: String
+      cover_image: File @link
+    }
+
   `)
 }

@@ -25,7 +25,7 @@ module.exports = {
       options: {
         baseUrl: "https://xxxxxxxxxx.execute-api.us-east-1.amazonaws.com",
         apiBase: "prod", // deployemnt stage
-        models: ["blog"], // modelId
+        models: ["blog","home_page"], // modelId
         apiKey: "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
       },
     },

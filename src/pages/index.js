@@ -1,19 +1,22 @@
 import * as React from "react"
 import { Link, graphql } from "gatsby"
+import { GatsbyImage, getImage } from "gatsby-plugin-image"
 
-import Bio from "../components/bio"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 
 const BlogIndex = ({ data, location }) => {
   const siteTitle = data.site.siteMetadata?.title || `Title`
   const posts = data.allAbuCmsBlog.nodes
+  const {intro, cover_image} = data.abuCmsHomePage
+  const homeImage = getImage(cover_image)
 
   if (posts.length === 0) {
     return (
       <Layout location={location} title={siteTitle}>
         <SEO title="All posts" />
-        <Bio />
+        <h2>{intro}</h2>
+        <GatsbyImage image={homeImage} alt="Home page" />
         <p>No blog posts found. Add blog content in your AbuCMS.</p>
       </Layout>
     )
@@ -22,7 +25,8 @@ const BlogIndex = ({ data, location }) => {
   return (
     <Layout location={location} title={siteTitle}>
       <SEO title="All posts" />
-      <Bio />
+      <h2>{intro}</h2>
+      <GatsbyImage image={homeImage} alt="Home page" />
       <ol style={{ listStyle: `none` }}>
         {posts.map(post => {
           const title = post.name || post.slug
@@ -66,6 +70,18 @@ export const pageQuery = graphql`
     site {
       siteMetadata {
         title
+      }
+    }
+    abuCmsHomePage {
+      intro
+      cover_image {
+        childImageSharp {
+          gatsbyImageData(
+            width: 600
+            placeholder: BLURRED
+            formats: [AUTO, WEBP, AVIF]
+          )
+        }
       }
     }
     allAbuCmsBlog(sort: { fields: publish_date, order: DESC }) {
