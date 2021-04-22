@@ -76,6 +76,7 @@ exports.createSchemaCustomization = ({ actions }) => {
       body: abuCmsHtml
       publish_date: Date @dateformat
       slug: String
+      cover_image: File @link
     }
 
     type abuCmsHtml implements Node {

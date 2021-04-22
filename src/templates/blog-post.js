@@ -1,5 +1,6 @@
 import * as React from "react"
 import { Link, graphql } from "gatsby"
+import { GatsbyImage, getImage } from "gatsby-plugin-image"
 
 import Bio from "../components/bio"
 import Layout from "../components/layout"
@@ -7,6 +8,7 @@ import SEO from "../components/seo"
 
 const BlogPostTemplate = ({ data, location }) => {
   const post = data.abuCmsBlog
+  const image = getImage(post.cover_image)
   const siteTitle = data.site.siteMetadata?.title || `Title`
   const { previous, next } = data
 
@@ -22,6 +24,9 @@ const BlogPostTemplate = ({ data, location }) => {
           <h1 itemProp="headline">{post.name}</h1>
           <p>{post.publish_date}</p>
         </header>
+        <div style={{ textAlign: "center", margin: "20px 10px" }}>
+          <GatsbyImage image={image} alt={post.name} />
+        </div>
         <section
           dangerouslySetInnerHTML={{ __html: post.body.html }}
           itemProp="articleBody"
@@ -82,6 +87,15 @@ export const pageQuery = graphql`
       }
       name
       publish_date(formatString: "MMM DD, YYYY")
+      cover_image {
+        childImageSharp {
+          gatsbyImageData(
+            width: 600
+            placeholder: BLURRED
+            formats: [AUTO, WEBP, AVIF]
+          )
+        }
+      }
     }
     previous: abuCmsBlog(id: { eq: $previousPostId }) {
       slug
