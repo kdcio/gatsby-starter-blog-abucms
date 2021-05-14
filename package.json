@@ -2,12 +2,13 @@
   "name": "gatsby-starter-blog-abucms",
   "private": true,
   "description": "A starter for a blog powered by Gatsby and Markdown",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "author": "Kyle Mathews <mathews.kyle@gmail.com>",
   "bugs": {
     "url": "https://github.com/gatsbyjs/gatsby/issues"
   },
   "dependencies": {
+    "@kdcio/gatsby-source-abucms": "^0.2.1",
     "gatsby": "^3.2.1",
     "gatsby-plugin-feed": "^3.2.0",
     "gatsby-plugin-gatsby-cloud": "^2.2.0",
@@ -17,7 +18,6 @@
     "gatsby-plugin-offline": "^4.2.0",
     "gatsby-plugin-react-helmet": "^4.2.0",
     "gatsby-plugin-sharp": "^3.2.1",
-    "gatsby-source-abucms": "^0.1.2",
     "gatsby-source-filesystem": "^3.2.0",
     "gatsby-transformer-sharp": "^3.2.0",
     "prismjs": "^1.23.0",

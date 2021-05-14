@@ -21,11 +21,11 @@ module.exports = {
       },
     },
     {
-      resolve: "gatsby-source-abucms",
+      resolve: "@kdcio/gatsby-source-abucms",
       options: {
         baseUrl: "https://xxxxxxxxxx.execute-api.us-east-1.amazonaws.com",
-        apiBase: "prod", // deployemnt stage
-        models: ["blog","home_page"], // modelId
+        apiBase: "prod", // deployment stage
+        models: ["blog", "home_page"], // modelId
         apiKey: "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
       },
     },
